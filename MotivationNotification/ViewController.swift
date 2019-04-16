@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
 
@@ -23,6 +24,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(updateQuote)))
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (allowed, error) in
+            if allowed {
+                self.configureAlerts()
+            }
+        }
     }
 
     @objc func updateQuote() {
@@ -79,6 +86,40 @@ class ViewController: UIViewController {
         let ac = UIActivityViewController(activityItems: [shareMessage], applicationActivities: nil)
         ac.popoverPresentationController?.sourceView = sender
         present(ac, animated: true)
+    }
+    
+    func configureAlerts() {
+        let center = UNUserNotificationCenter.current()
+        
+        center.removeAllDeliveredNotifications()
+        center.removeAllPendingNotificationRequests()
+        
+        let shuffled = quotes.shuffled()
+        
+        for i in 1...7 {
+            let content = UNMutableNotificationContent()
+            content.title = "Mo' Motivation"
+            content.body = shuffled[i].text
+            
+            var dateComponents = DateComponents()
+            dateComponents.day = i
+            
+            if let alertDate = Calendar.current.date(byAdding: dateComponents, to: Date()) {
+                var alertComponents = Calendar.current.dateComponents([.day, .month, .year], from: alertDate)
+                alertComponents.hour = 10
+                
+//                let trigger = UNCalendarNotificationTrigger(dateMatching: alertComponents, repeats: false)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(i) * 5, repeats: false)
+                
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                
+                center.add(request) { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
     }
 }
 
