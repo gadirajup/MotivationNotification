@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     let quotes = Bundle.main.decode([Quote].self, from: "quotes.json")
     let images = Bundle.main.decode([String].self, from: "pictures.json")
     
+    var shareQuote: Quote!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -26,6 +28,7 @@ class ViewController: UIViewController {
     @objc func updateQuote() {
         guard let backgroundImageName = images.randomElement() else { return }
         guard let selectedQuote = quotes.randomElement() else { return }
+        shareQuote = selectedQuote
         
         background.image = UIImage(named: backgroundImageName)
         
@@ -69,6 +72,13 @@ class ViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         updateQuote()
+    }
+    
+    @IBAction func shareButtonTapped(_ sender: UIButton) {
+        let shareMessage = "\"\(shareQuote.text)\" - \(shareQuote.author)"
+        let ac = UIActivityViewController(activityItems: [shareMessage], applicationActivities: nil)
+        ac.popoverPresentationController?.sourceView = sender
+        present(ac, animated: true)
     }
 }
 
