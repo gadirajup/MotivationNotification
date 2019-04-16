@@ -1,5 +1,5 @@
 //
-//  BundleDecoding.swift
+//  Quote.swift
 //  MotivationNotification
 //
 //  Created by Prudhvi Gadiraju on 4/16/19.
@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct Quote: Decodable {
+    let text: String
+    let author: String
+}

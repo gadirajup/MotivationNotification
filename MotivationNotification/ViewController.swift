@@ -16,6 +16,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let quotes = Bundle.main.decode([Quote].self, from: "quotes.json")
+        let pictures = Bundle.main.decode([String].self, from: "pictures.json")
+        
+        print(quotes)
+        print(pictures)
     }
 
 

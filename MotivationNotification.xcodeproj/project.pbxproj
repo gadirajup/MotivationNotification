@@ -14,7 +14,8 @@
 		A4880DCF226654E600C06FB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4880DCD226654E600C06FB5 /* LaunchScreen.storyboard */; };
 		A4880DD8226656A800C06FB5 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = A4880DD6226656A800C06FB5 /* quotes.json */; };
 		A4880DD9226656A800C06FB5 /* pictures.json in Resources */ = {isa = PBXBuildFile; fileRef = A4880DD7226656A800C06FB5 /* pictures.json */; };
-		A4880DDB2266575D00C06FB5 /* BundleDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880DDA2266575D00C06FB5 /* BundleDecoding.swift */; };
+		A4880DDB2266575D00C06FB5 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880DDA2266575D00C06FB5 /* Bundle+Decode.swift */; };
+		A4880DDD2266585B00C06FB5 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880DDC2266585B00C06FB5 /* Quote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		A4880DD0226654E600C06FB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4880DD6226656A800C06FB5 /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
 		A4880DD7226656A800C06FB5 /* pictures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pictures.json; sourceTree = "<group>"; };
-		A4880DDA2266575D00C06FB5 /* BundleDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleDecoding.swift; sourceTree = "<group>"; };
+		A4880DDA2266575D00C06FB5 /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
+		A4880DDC2266585B00C06FB5 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,8 @@
 			children = (
 				A4880DC4226654E500C06FB5 /* AppDelegate.swift */,
 				A4880DC6226654E500C06FB5 /* ViewController.swift */,
-				A4880DDA2266575D00C06FB5 /* BundleDecoding.swift */,
+				A4880DDA2266575D00C06FB5 /* Bundle+Decode.swift */,
+				A4880DDC2266585B00C06FB5 /* Quote.swift */,
 				A4880DC8226654E500C06FB5 /* Main.storyboard */,
 				A4880DCB226654E600C06FB5 /* Assets.xcassets */,
 				A4880DCD226654E600C06FB5 /* LaunchScreen.storyboard */,
@@ -146,7 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4880DDB2266575D00C06FB5 /* BundleDecoding.swift in Sources */,
+				A4880DDD2266585B00C06FB5 /* Quote.swift in Sources */,
+				A4880DDB2266575D00C06FB5 /* Bundle+Decode.swift in Sources */,
 				A4880DC7226654E500C06FB5 /* ViewController.swift in Sources */,
 				A4880DC5226654E500C06FB5 /* AppDelegate.swift in Sources */,
 			);
