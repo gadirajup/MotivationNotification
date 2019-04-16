@@ -20,10 +20,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(updateQuote)))
     }
 
-    func updateQuote() {
+    @objc func updateQuote() {
         guard let backgroundImageName = images.randomElement() else { return }
         guard let selectedQuote = quotes.randomElement() else { return }
         
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         while true {
             font = UIFont(name: "Georgia-Italic", size: fontSize)
             attrs = [.font: font!, .foregroundColor: UIColor.white]
-            
+        
             str = NSAttributedString(string: selectedQuote.text, attributes: attrs)
             quoteRect = str.boundingRect(with: CGSize(width: drawBounds.width, height: .greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
             
@@ -52,6 +52,23 @@ class ViewController: UIViewController {
                 break
             }
         }
+        
+        let format = UIGraphicsImageRendererFormat()
+        format.opaque = false
+        let renderer = UIGraphicsImageRenderer(bounds: quoteRect.insetBy(dx: -30, dy: -30), format: format)
+        
+        quote.image = renderer.image(actions: { (context) in
+            for i in 0...5 {
+                context.cgContext.setShadow(offset: .zero, blur: CGFloat(i))
+                str.draw(in: quoteRect)
+            }
+        })
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        updateQuote()
     }
 }
 
